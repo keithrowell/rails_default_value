@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = RailsDefaultValue::VERSION
   spec.authors       = ["Keith Rowell"]
   spec.email         = ["keith@keithrowell.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = "default values for active record models"
+  spec.description   = "set default values for your active record models with a simple, concise DSL. \n\n:    default :field_name => :value"
   spec.homepage      = ""
   spec.license       = "MIT"
 
