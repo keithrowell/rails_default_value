@@ -9,7 +9,6 @@ module RailsDefaultValue
         if value.is_a? Proc
           self.send key.to_s, value.call
         else
-          puts "setting default for #{key.to_s}: #{value}"
           self.send("#{key.to_s}=", value) if (self.send(key.to_s).respond_to?(:nil?) and self.send(key.to_s).nil?) or (self.send(key.to_s).respond_to?(:empty?) and self.send(key.to_s).empty?)
         end
       end
@@ -35,7 +34,7 @@ module RailsDefaultValue
     end
   
     def default? field
-      raise Exception.new "no defined dafault value for #{field.to_s.humanize}" unless @@default_values[field]
+      raise Exception.new "No defined dafault value for #{field.to_s.humanize}" unless @@default_values[field]
       @@default_values[field]
     end
   
