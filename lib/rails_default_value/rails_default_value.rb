@@ -17,22 +17,19 @@ module RailsDefaultValue
   
   module ClassMethods
     
+    # class_eval "@@default_values = {}"
+    # class_eval "def default_values ; @@default_values ; end"
+    @@default_values = {}
+    def default_values ; @@default_values ; end
+    
     def default options
-      class_eval "@@default_values = {}"
-      class_eval "def self.default_values ; @@default_values ; end"
       options.each do |key, value|
         default_values[key] = value
       end
       include InstanceMethods
       before_validation :set_defaults, :on => :create
     end
-  
-    # def default? field
-    #   raise Exception.new "No defined dafault value for #{field.to_s.humanize}" unless @@default_values[field]
-    #   @@default_values[field]
-    # end
-  
-    
+      
   end
 end
 
