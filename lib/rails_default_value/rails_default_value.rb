@@ -15,10 +15,12 @@ module RailsDefaultValue
   end
   
   module ClassMethods
-    @@default_values = {}
-    def default_values ; @@default_values ; end
     
     def default options
+
+      class_eval "@@default_values = {} unless defined? @@default_values"
+      class_eval "def self.default_values ; @@default_values ; end"
+    
       options.each do |key, value|
         default_values[key] = value
       end

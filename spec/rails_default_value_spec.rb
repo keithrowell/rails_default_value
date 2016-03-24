@@ -18,7 +18,18 @@ build_model :my_model do
   default :stored_at => -> { Time.now }
 end
 
-describe RailsDefaultValue do
+build_model :my_other_model do
+  extend RailsDefaultValue::ClassMethods
+  integer  :field_1
+  integer  :field_2
+  attr_accessor :field_1
+  attr_accessor :field_2
+  default :field_1 => 1
+  default :field_2 => 2
+
+end
+
+describe RailsDefaultValue do  
   context "with a new object" do
     it "has a default value only after save" do
       my_model = MyModel.new
@@ -64,4 +75,17 @@ describe RailsDefaultValue do
       expect(my_model.status.to_sym).to eq :broken
     end
   end
+  
+  context "with a second model" do
+    it "has a default value for field_1 of 1" do
+      my_model = MyOtherModel.create
+      expect(my_model.field_1).to eq 1
+    end
+    
+    it "has a default value for field_2 of 2" do
+      my_model = MyOtherModel.create
+      expect(my_model.field_2).to eq 2
+    end    
+  end
+  
 end
