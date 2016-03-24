@@ -2,7 +2,7 @@
 
 Assign default values to Model fields in your Rails apps.
 
-Other solutions for assigning default values tend to be at the database layer in migrations. If you prefer to keep your model logic in your model code, use 'rails_default_value'.
+Other solutions for assigning default values tend to be at the database layer in migrations. If you prefer to keep your model logic in your model code, use `rails_default_value`.
 
 ## Installation
 
